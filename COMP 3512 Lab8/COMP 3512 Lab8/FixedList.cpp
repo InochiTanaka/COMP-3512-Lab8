@@ -22,17 +22,21 @@ private:
 template<class T, size_t N>
 FixedList<T, N>::FixedList()
 {
+	for (int < i = 0; i < capacity(); i++) {
+		set[i] = nullptr;
+	}
 }
 
 template<class T, size_t N>
 FixedList<T, N>::~FixedList()
 {
+	delete []set;
 }
 
 template<class T, size_t N>
 const T & FixedList<T, N>::get(unsigned int index) const
 {
-	if(index > size())
+	if(index >= size())
 	{
 		throw std::out_of_range::out_of_range();
 	}
@@ -43,7 +47,7 @@ const T & FixedList<T, N>::get(unsigned int index) const
 template<class T, size_t N>
 T & FixedList<T, N>::operator[](unsigned int index)
 {
-	if (index > size())
+	if (index >= size())
 	{
 		throw std::out_of_range::out_of_range();
 	}
@@ -54,7 +58,7 @@ T & FixedList<T, N>::operator[](unsigned int index)
 template<class T, size_t N>
 int FixedList<T, N>::getFirstIndex(const T & t) const
 {
-	for (int i  = 0; i < capacity(); i++ ) 
+	for (int i  = 0; i < size(); i++ ) 
 	{
 		if (set[i] == t) 
 		{
@@ -80,11 +84,29 @@ size_t FixedList<T, N>::capacity() const
 template<class T, size_t N>
 bool FixedList<T, N>::add(const T & t)
 {
+	if(set[size()] = t)
+		return ture;
+
 	return false;
+
 }
 
 template<class T, size_t N>
 T FixedList<T, N>::remove(const T & t)
 {
-	return T();
+	for (int i = 0; i < capacity(); i++)
+	{
+		if (set[i] == t)
+		{
+			while (i < size()) 
+			{
+				set[i] = set[i + 1];
+			}
+			set[i + 1] = nullptr;
+
+			return std::begin(set)
+		}
+	}
+
+	return t;
 }
