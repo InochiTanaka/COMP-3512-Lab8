@@ -1,4 +1,7 @@
-﻿template<class T, size_t N>
+﻿#include <iostream>
+#include <list> 
+
+template<class T, size_t N = 10>
 class FixedList
 {
 public:
@@ -13,6 +16,7 @@ public:
 	T remove(const T& t);
 private:
 	// private variables here
+	T set[N];
 };
 
 template<class T, size_t N>
@@ -28,7 +32,12 @@ FixedList<T, N>::~FixedList()
 template<class T, size_t N>
 const T & FixedList<T, N>::get(unsigned int index) const
 {
-	// TODO: insert return statement here
+	if(index > size())
+	{
+		throw std::out_of_range::out_of_range();
+	}
+	
+	return set[index];
 }
 
 template<class T, size_t N>
@@ -46,13 +55,13 @@ int FixedList<T, N>::getFirstIndex(const T & t) const
 template<class T, size_t N>
 size_t FixedList<T, N>::size() const
 {
-	return size_t();
+	return sizeof(set) / sizeof(set[0])
 }
 
 template<class T, size_t N>
 size_t FixedList<T, N>::capacity() const
 {
-	return size_t();
+	return set.size();
 }
 
 template<class T, size_t N>
