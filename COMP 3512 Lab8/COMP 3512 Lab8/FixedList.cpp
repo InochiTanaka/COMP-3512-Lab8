@@ -43,13 +43,26 @@ const T & FixedList<T, N>::get(unsigned int index) const
 template<class T, size_t N>
 T & FixedList<T, N>::operator[](unsigned int index)
 {
-	return T();
+	if (index > size())
+	{
+		throw std::out_of_range::out_of_range();
+	}
+
+	return set[index];
 }
 
 template<class T, size_t N>
 int FixedList<T, N>::getFirstIndex(const T & t) const
 {
-	return 0;
+	for (int i  = 0; i < capacity(); i++ ) 
+	{
+		if (set[i] == t) 
+		{
+			return i;
+		}
+	}
+
+	return -1;
 }
 
 template<class T, size_t N>
