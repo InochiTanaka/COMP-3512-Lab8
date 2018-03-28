@@ -72,7 +72,7 @@ int FixedList<T, N>::getFirstIndex(const T & t) const
 template<class T, size_t N>
 size_t FixedList<T, N>::size() const
 {
-	return sizeof(set) / sizeof(set[0])
+	return sizeof(set) / sizeof(set[0]);
 }
 
 template<class T, size_t N>
@@ -104,7 +104,7 @@ T FixedList<T, N>::remove(const T & t)
 			}
 			set[i + 1] = nullptr;
 
-			return std::begin(set)
+			return nullptr;
 		}
 	}
 
