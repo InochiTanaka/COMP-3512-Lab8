@@ -3,12 +3,16 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
+
+//Unit test program for FixedList
 namespace UnitTestForFixedList
 {		
 	TEST_CLASS(UnitTest1)
 	{
 	public:
 
+		//Check Get function.
+		//If could get specific data on the index, the test will be passed. 
 		TEST_METHOD(Test_get_inside_array)
 		{
 			FixedList<int, 3> testObj;
@@ -25,6 +29,8 @@ namespace UnitTestForFixedList
 			Assert::AreEqual(2, testObj.get(2));
 		}
 
+		//Check Get function.
+		//If could get error on out of range, this test will be passed. 
 		TEST_METHOD(FailTest_get_outside_array)
 		{
 			FixedList<int, 3> testObj;
@@ -48,6 +54,8 @@ namespace UnitTestForFixedList
 			}
 		}
 
+		//Check operator function.
+		//If could get specific data on the index, the test will be passed. 
 		TEST_METHOD(Test_get_inside_operator)
 		{
 			FixedList<int, 3> testObj;
@@ -64,6 +72,8 @@ namespace UnitTestForFixedList
 			Assert::AreEqual(2, testObj.operator[](2));
 		}
 
+		//Check operator function.
+		//If could get error on out of range, this test will be passed. 
 		TEST_METHOD(FailTest_get_outside_operator)
 		{
 			FixedList<int, 3> testObj;
@@ -87,6 +97,9 @@ namespace UnitTestForFixedList
 			}
 		}
 
+		//Check getFirstIndex function.
+		//If could get specific data, return the index.
+		//And, If could not, return -1. This test will be passed.
 		TEST_METHOD(Test_get_firstIndex)
 		{
 			FixedList<int, 5> testObj;
@@ -110,6 +123,8 @@ namespace UnitTestForFixedList
 			Assert::AreEqual(-1, testObj.getFirstIndex(5));
 		}
 
+		//Check add function on int.
+		//If could add, this test will be passed.
 		TEST_METHOD(Test_add_int)
 		{		
 			FixedList<int, 3> testObj;
@@ -118,6 +133,8 @@ namespace UnitTestForFixedList
 			Assert::IsTrue(testObj.add(temp));
 		}
 
+		//Check add function on double.
+		//If could add, this test will be passed.
 		TEST_METHOD(Test_add_double)
 		{
 			FixedList<double, 3> testObj;
@@ -126,6 +143,8 @@ namespace UnitTestForFixedList
 			Assert::IsTrue(testObj.add(temp));
 		}
 
+		//Check add function on char.
+		//If could add, this test will be passed.
 		TEST_METHOD(Test_add_char)
 		{
 			FixedList<char*, 3> testObj;
@@ -134,6 +153,8 @@ namespace UnitTestForFixedList
 			Assert::IsTrue(testObj.add(temp));
 		}
 
+		//Check add function.
+		//If could not add because over flow capacity, this test will be passed.
 		TEST_METHOD(FailTest_add_more_than_capacity)
 		{
 			FixedList<int, 3> testObj;
@@ -151,6 +172,9 @@ namespace UnitTestForFixedList
 			Assert::IsFalse(testObj.add(temp));
 		}
 
+		//Check remove function and compare with previous data.
+		//If the size is reduced one, if the capacities are not changed,
+		//and if the final data is same with model, this test will be passed.
 		TEST_METHOD(Test_remove)
 		{
 			size_t tempSize, tempCap, curSize, curCap;
